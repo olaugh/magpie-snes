@@ -1,0 +1,11 @@
+# Build with C++17
+build --cxxopt=-std=c++17
+
+# Enable colorful output
+build --color=yes
+
+# Show test output on failure
+test --test_output=errors
+
+# macOS specific settings
+build:macos --copt=-Wno-deprecated-declarations

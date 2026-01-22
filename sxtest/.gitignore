@@ -1,0 +1,17 @@
+# Bazel
+bazel-*
+MODULE.bazel.lock
+
+# Build artifacts
+*.o
+*.s
+!crt0.s
+*.map
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# macOS
+.DS_Store
