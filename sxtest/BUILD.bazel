@@ -1,0 +1,63 @@
+# sxtest - Headless Snes9x test harness
+
+package(default_visibility = ["//visibility:public"])
+
+# Prebuilt snes9x libretro core (static library)
+# Build with: cd vendor/snes9x/libretro && make clean && make platform=osx STATIC_LINKING=1
+# Then rename: mv snes9x_libretro.dylib snes9x_libretro.a
+cc_import(
+    name = "snes9x_libretro",
+    static_library = "vendor/snes9x/libretro/snes9x_libretro.a",
+    hdrs = ["vendor/snes9x/libretro/libretro.h"],
+)
+
+# sxtest C++ wrapper library
+cc_library(
+    name = "sxtest",
+    srcs = ["src/sxtest.cpp"],
+    hdrs = ["include/sxtest.h"],
+    includes = [
+        "include",
+        "vendor/snes9x/libretro",
+    ],
+    deps = [
+        ":snes9x_libretro",
+        "@googletest//:gtest",
+    ],
+)
+
+# Example test
+cc_test(
+    name = "sxtest_example",
+    srcs = ["tests/example_test.cpp"],
+    deps = [
+        ":sxtest",
+        "@googletest//:gtest_main",
+    ],
+)
+
+# Minimal ROM test (embedded test ROM)
+cc_test(
+    name = "sxtest_minimal",
+    srcs = [
+        "tests/minimal_test.cpp",
+        "tests/minimal_rom.h",
+    ],
+    deps = [
+        ":sxtest",
+        "@googletest//:gtest_main",
+    ],
+)
+
+# Prime sieve test (cc65 C code)
+cc_test(
+    name = "sxtest_prime_sieve",
+    srcs = [
+        "tests/prime_sieve_test.cpp",
+        "tests/prime_sieve_rom.h",
+    ],
+    deps = [
+        ":sxtest",
+        "@googletest//:gtest_main",
+    ],
+)
