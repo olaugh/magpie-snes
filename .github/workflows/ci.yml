@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main, magpie-minimal-port]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Bazel
+        uses: bazel-contrib/setup-bazel@0.9.1
+        with:
+          bazelisk-cache: true
+          disk-cache: ${{ github.workflow }}
+          repository-cache: true
+
+      - name: Run sxtest tests
+        working-directory: sxtest
+        run: bazel test //... --test_output=errors
