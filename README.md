@@ -95,32 +95,37 @@ See [sxtest/PARITY_PLAN.md](sxtest/PARITY_PLAN.md) for the test framework roadma
 
 ## Development Status
 
-**Phase 1: Bootstrap** (current)
+**Phase 1: Bootstrap** (complete)
 - [x] cc65 toolchain setup
 - [x] Basic PPU initialization
 - [x] Text rendering
 - [x] Controller input
 - [x] Test harness (sxtest)
-- [ ] Memory management
-- [ ] Board display
+- [x] Board display (15x15 grid with bonus squares)
+- [x] Tile bag with standard Scrabble distribution
+- [x] PRNG (LCG) and Fisher-Yates shuffle
+- [x] Player rack display
+- [x] CI pipeline (GitHub Actions)
 
-**Phase 2: Core Engine**
-- [ ] KWG lexicon loading
-- [ ] Board representation
-- [ ] Move generation (GADDAG)
-- [ ] Move validation
+**Phase 2: Core Engine** (next)
+- [ ] KWG lexicon loading (~4 hours)
+- [ ] Board representation with cross-checks (~4 hours)
+- [ ] Move generation (GADDAG) (~8 hours)
+- [ ] Move validation (~2 hours)
 
 **Phase 3: AI**
-- [ ] Leave value evaluation
-- [ ] Move scoring
-- [ ] Best move selection
-- [ ] Endgame solver
+- [ ] Leave value evaluation (~4 hours)
+- [ ] Move scoring (~2 hours)
+- [ ] Best move selection (~2 hours)
+- [ ] Endgame solver (~8 hours)
 
 **Phase 4: Game**
-- [ ] Full game loop
-- [ ] Tile bag management
-- [ ] Score tracking
-- [ ] Game save/load
+- [ ] Full game loop (~4 hours)
+- [x] Tile bag management (complete)
+- [ ] Score tracking (~2 hours)
+- [ ] Game save/load (~4 hours)
+
+**Estimated remaining: ~44 hours** (Phase 2-4)
 
 ## Technical Notes
 
