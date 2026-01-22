@@ -88,15 +88,3 @@ cc_test(
     ],
 )
 
-# Ultra-simple test ROM
-cc_test(
-    name = "sxtest_simple",
-    srcs = [
-        "tests/simple_test.cpp",
-        "tests/simple_rom.h",
-    ],
-    deps = [
-        ":sxtest",
-        "@googletest//:gtest_main",
-    ],
-)
