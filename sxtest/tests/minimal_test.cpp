@@ -32,29 +32,12 @@ TEST_F(MinimalRomTest, CanRunFrames) {
 }
 
 TEST_F(MinimalRomTest, WRAMIsAccessible) {
-    // Check WRAM BEFORE running any frames
-    uint8_t* wram = emu.GetWRAM();
-    printf("BEFORE any frames:\n");
-    if (wram) {
-        printf("  WRAM[0x0000-0x0009]:");
-        for (int i = 0; i < 10; i++) {
-            printf(" %02X", wram[i]);
-        }
-        printf("\n");
-    }
-
     // Run a few frames to let the ROM initialize
     RunFrames(10);
 
     // WRAM should be accessible
+    uint8_t* wram = emu.GetWRAM();
     EXPECT_NE(wram, nullptr) << "WRAM should be accessible";
-
-    printf("After 10 frames:\n");
-    printf("  WRAM[0x0000-0x0009]:");
-    for (int i = 0; i < 10; i++) {
-        printf(" %02X", wram[i]);
-    }
-    printf("\n");
 }
 
 TEST_F(MinimalRomTest, CanSaveAndLoadState) {
@@ -66,7 +49,6 @@ TEST_F(MinimalRomTest, CanSaveAndLoadState) {
 
     // Run more frames
     RunFrames(30);
-    uint64_t frames_after = GetFrameCount();
 
     // Load state (frame count resets to saved point)
     EXPECT_TRUE(emu.LoadState(state));

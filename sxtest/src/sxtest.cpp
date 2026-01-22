@@ -179,11 +179,9 @@ public:
 // Emulator - Public interface implementation
 // ---------------------------------------------------------------------------
 
-Emulator::Emulator() : pImpl(new Impl()) {}
+Emulator::Emulator() : pImpl(std::make_unique<Impl>()) {}
 
-Emulator::~Emulator() {
-    delete pImpl;
-}
+Emulator::~Emulator() = default;
 
 bool Emulator::LoadRom(const std::string& path) {
     std::ifstream file(path, std::ios::binary | std::ios::ate);

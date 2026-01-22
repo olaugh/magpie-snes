@@ -37,6 +37,7 @@
 #include <vector>
 #include <cstdint>
 #include <functional>
+#include <memory>
 
 namespace SX {
 
@@ -183,7 +184,7 @@ public:
 
 private:
     class Impl;
-    Impl* pImpl;
+    std::unique_ptr<Impl> pImpl;
 };
 
 /**
