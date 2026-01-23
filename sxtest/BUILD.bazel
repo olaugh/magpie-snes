@@ -76,12 +76,14 @@ cc_test(
 )
 
 # Magpie debug test (for troubleshooting)
+# Tagged manual to exclude from `bazel test //...` due to verbose output
 cc_test(
     name = "sxtest_magpie_debug",
     srcs = [
         "tests/magpie_debug_test.cpp",
         "tests/magpie_rom.h",
     ],
+    tags = ["manual"],
     deps = [
         ":sxtest",
         "@googletest//:gtest_main",

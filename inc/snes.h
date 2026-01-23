@@ -137,10 +137,10 @@ extern volatile uint16_t frame_counter;
 /* VBlank callback */
 extern void (*vblank_handler)(void);
 
-/* Wait for VBlank - implemented in main.c */
+/* Wait for VBlank - implemented in src/graphics.c */
 void wait_vblank(void);
 
-/* Wait for NMI flag clear (beginning of VBlank) */
+/* Wait for NMI flag - implemented in src/graphics.c */
 void wait_nmi(void);
 
 /* Read joypad 1 */

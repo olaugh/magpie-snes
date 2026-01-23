@@ -30,7 +30,7 @@
 .byte   "SCRABBLE AI          "  ; Game title (21 chars, space padded)
 .byte   $20                     ; Map mode: $20 = LoROM
 .byte   $00                     ; Cartridge type: ROM only
-.byte   $08                     ; ROM size: 2^8 * 1KB = 256KB
+.byte   $05                     ; ROM size: 2^5 * 1KB = 32KB
 .byte   $00                     ; RAM size: 0KB (no SRAM)
 .byte   $01                     ; Destination: North America
 .byte   $00                     ; Fixed value (old licensee)

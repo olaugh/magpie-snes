@@ -17,7 +17,7 @@
 .byte   "MINIMAL TEST         "  ; 21 chars
 .byte   $20                     ; LoROM
 .byte   $00                     ; ROM only
-.byte   $08                     ; 256KB
+.byte   $05                     ; 32KB
 .byte   $00                     ; No RAM
 .byte   $01                     ; North America
 .byte   $00

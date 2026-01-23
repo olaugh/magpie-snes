@@ -17,7 +17,7 @@
 .byte   "SIMPLE TEST          "  ; Game title (21 chars)
 .byte   $20                     ; Map mode: LoROM
 .byte   $00                     ; Cartridge type: ROM only
-.byte   $08                     ; ROM size: 256KB
+.byte   $05                     ; ROM size: 32KB
 .byte   $00                     ; RAM size: 0KB
 .byte   $01                     ; Destination: NA
 .byte   $00                     ; Old licensee

@@ -2,7 +2,7 @@
  * PPU Graphics Driver for SNES
  * Magpie Scrabble AI Port
  *
- * Implements basic text/tile rendering using Mode 1
+ * Implements basic text/tile rendering using Mode 0
  */
 
 #include "snes.h"
@@ -228,7 +228,7 @@ static const unsigned char font_data[96][8] = {
     /* DEL */ {0x00, 0x10, 0x38, 0x6C, 0xC6, 0xC6, 0xFE, 0x00},
 };
 
-/* Initialize PPU for Mode 1 text display */
+/* Initialize PPU for Mode 0 text display */
 void ppu_init(void) {
     /* Force blank during setup */
     REG_INIDISP = INIDISP_BLANK;
@@ -371,6 +371,9 @@ void ppu_draw_number(uint8_t x, uint8_t y, int16_t num, uint8_t pal) {
 /* Enable display */
 void ppu_enable_display(uint8_t brightness) {
     REG_INIDISP = brightness & 0x0F;
+
+    /* Enable NMI (VBlank interrupt) so wait_vblank() works */
+    REG_NMITIMEN = 0x80;
 }
 
 /* Disable display (force blank) */

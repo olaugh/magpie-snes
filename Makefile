@@ -32,7 +32,9 @@ ASFLAGS = --cpu 65816 -I $(SRC_DIR)
 
 # Linker flags
 # Use none.lib for freestanding runtime functions
-CC65_LIB = /opt/homebrew/Cellar/cc65/2.19/share/cc65/lib/none.lib
+# CC65_LIB can be overridden; defaults to finding relative to cc65 binary
+CC65_HOME ?= $(dir $(shell which cc65))../share/cc65
+CC65_LIB ?= $(CC65_HOME)/lib/none.lib
 LDFLAGS = -C snes.cfg
 
 # ROM output
