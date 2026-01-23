@@ -61,3 +61,32 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+# Magpie Scrabble test (minimal implementation)
+cc_test(
+    name = "sxtest_magpie",
+    srcs = [
+        "tests/magpie_test.cpp",
+        "tests/magpie_rom.h",
+    ],
+    deps = [
+        ":sxtest",
+        "@googletest//:gtest_main",
+    ],
+)
+
+# Magpie debug test (for troubleshooting)
+# Tagged manual to exclude from `bazel test //...` due to verbose output
+cc_test(
+    name = "sxtest_magpie_debug",
+    srcs = [
+        "tests/magpie_debug_test.cpp",
+        "tests/magpie_rom.h",
+    ],
+    tags = ["manual"],
+    deps = [
+        ":sxtest",
+        "@googletest//:gtest_main",
+    ],
+)
+
